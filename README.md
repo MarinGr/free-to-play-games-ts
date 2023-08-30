@@ -11,7 +11,7 @@ React, Redux Toolkit, React Router, Typescript, Chakra UI.
 ## Демо
 
 Демо приложения доступно по ссылке:
-https://maringr.github.io/free-to-play-games-app/
+https://maringr.github.io/free-to-play-games-ts/
 
 ![Home page](/src/assets/images/home_page.png)
 
