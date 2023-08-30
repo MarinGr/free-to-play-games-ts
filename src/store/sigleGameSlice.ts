@@ -26,7 +26,6 @@ export interface CachedGame extends IGame {
 }
 
 export type SingleGameState = {
-  // game: IGame | {};
   game: IGame | any;
   savedGames: any;
   loading: string;
