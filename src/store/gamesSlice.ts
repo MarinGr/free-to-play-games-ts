@@ -6,11 +6,14 @@ import { filterSelected, GamesState } from "../types/types";
 export const fetchGames = createAsyncThunk(
   "games/fetchGames",
   async (filters: filterSelected) => {
-    const response = await fetchMultipleGames(filters);
-    if (response.ok) {
-      const data = await response.json();
-      return data;
+    for (let i = 0; i < 4; i++) {
+      const response = await fetchMultipleGames(filters);
+      if (response.ok) {
+        const data = await response.json();
+        return data;
+      }
     }
+
     throw new Error("Something went wrong");
   }
 );
