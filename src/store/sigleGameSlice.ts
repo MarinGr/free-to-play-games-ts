@@ -25,7 +25,6 @@ export interface CachedGame extends IGame {
 
 export type SingleGameState = {
   game: IGame | {};
-  // savedGames: IGame[];
   savedGames: any;
   loading: string;
   error: string | null;
@@ -45,7 +44,6 @@ export const gamesSlice = createSlice({
     getFromSaved(state, action) {
       state.loading = "success";
       const id = action.payload;
-      // const all = JSON.parse(localStorage.getItem("savedGames"));
       const all = getCachedFromLocalStorage();
       const target = all.find((el: any) => el?.id == id);
       state.game = target;
