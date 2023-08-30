@@ -10,10 +10,12 @@ import { IGame } from "../types/types";
 export const fetchGame = createAsyncThunk(
   "games/fetchSingleGame",
   async (id: string | undefined) => {
-    const response = await fetchSingleGame(id);
-    if (response.ok) {
-      const data = await response.json();
-      return data;
+    for (let i = 0; i < 4; i++) {
+      const response = await fetchSingleGame(id);
+      if (response.ok) {
+        const data = await response.json();
+        return data;
+      }
     }
     throw new Error("Something went wrong");
   }
