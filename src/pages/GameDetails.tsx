@@ -16,7 +16,6 @@ import Carousel from "../components/Carousel";
 import LoadingScreen from "../components/LoadingScreen";
 import ErrorScreen from "../components/ErrorScreen";
 import { dateToRuFormat } from "../helpers/helpers";
-import { getSingleGame } from "../store/selectors/selectors";
 import { useAppDispatch, useAppSelector } from "../hooks/hooks";
 
 const GameDetails = () => {
@@ -24,7 +23,9 @@ const GameDetails = () => {
 
   const { id } = useParams();
 
-  const { game, savedGames, loading, error } = useAppSelector(getSingleGame);
+  const { game, savedGames, loading, error } = useAppSelector(
+    (state) => state.singleGame
+  );
 
   const [systemReqs, setSystemReqs] = useState<any>({
     reqs: {},
@@ -119,7 +120,7 @@ const GameDetails = () => {
           </Container>
         </Box>
       )}
-      {loading === "error" && <ErrorScreen error={error} />}
+      {loading === "error" && error && <ErrorScreen error={error} />}
     </Box>
   );
 };

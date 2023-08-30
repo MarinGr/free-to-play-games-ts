@@ -3,11 +3,10 @@ import { Flex } from "@chakra-ui/react";
 import GamesList from "../components/GamesList";
 import LoadingScreen from "../components/LoadingScreen";
 import ErrorScreen from "../components/ErrorScreen";
-import { getGames } from "../store/selectors/selectors";
 import { useAppSelector } from "../hooks/hooks";
 
 const Home = () => {
-  const { loading, error } = useAppSelector(getGames);
+  const { loading, error } = useAppSelector((state) => state.games);
 
   return (
     <Flex
@@ -23,7 +22,7 @@ const Home = () => {
       <Filters />
       {loading === "loading" && <LoadingScreen />}
       {loading === "success" && <GamesList />}
-      {loading === "error" && <ErrorScreen error={error} />}
+      {loading === "error" && error && <ErrorScreen error={error} />}
     </Flex>
   );
 };

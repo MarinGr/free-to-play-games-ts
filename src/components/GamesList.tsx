@@ -1,12 +1,11 @@
 import { SimpleGrid } from "@chakra-ui/react";
 import GameCard from "./GameCard";
 import NoGamesFound from "./NoGamesFound";
-import { getGames } from "../store/selectors/selectors";
 import { useAppSelector } from "../hooks/hooks";
 import { IGame } from "../types/types";
 
 const GamesList = () => {
-  const { games } = useAppSelector(getGames);
+  const { games } = useAppSelector((state) => state.games);
 
   return (
     <>

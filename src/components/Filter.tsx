@@ -2,9 +2,9 @@ import { Select, Box, Text } from "@chakra-ui/react";
 import { changeFilters } from "../store/gamesSlice";
 import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
-import { getGames } from "../store/selectors/selectors";
 import { useAppDispatch, useAppSelector } from "../hooks/hooks";
 import { filter } from "../data/filtersData";
+import { filterSelected } from "../types/types";
 
 type FilterProps = {
   filter: filter;
@@ -13,9 +13,11 @@ type FilterProps = {
 const Filter = ({ filter }: FilterProps) => {
   const dispatch = useAppDispatch();
 
-  const { filtersSelected } = useAppSelector(getGames);
+  const { filtersSelected } = useAppSelector((state) => state.games);
 
-  const [value, setValue] = useState(filtersSelected[filter.value]);
+  const [value, setValue] = useState(
+    filtersSelected[filter.value as keyof filterSelected]
+  );
 
   const handleChange = (
     e: React.ChangeEvent<HTMLSelectElement>,
