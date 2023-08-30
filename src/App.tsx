@@ -15,6 +15,7 @@ export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<RootLayout />}>
       <Route path="/" element={<Home />} />
+      <Route path="*" element={<Home />} />
       <Route path="game/:id" element={<GameDetails />} />
     </Route>
   )
